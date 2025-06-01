@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 export default function Home() {
   const common_input_css = "mr-1";
   const common_label_css = "hover:cursor-pointer";
