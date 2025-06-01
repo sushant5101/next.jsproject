@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     RADIOS.forEach(radio => {
         radio.addEventListener("change", () => {
-            let value = radio.ariaValueMax;
-            console.log(value);
         });
     });
 

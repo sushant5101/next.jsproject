@@ -14,8 +14,8 @@ export const Footer = () => {
     }
     return (
         <div className="text-gray-400  p-2 border-t-2 border-gray-400">
-            <ul className="flex justify-center p-2" title="Under maintenances">
-                <li>
+            <ul className=" flex justify-center p-2">
+                <li title="Under maintenances">
                     <h6 className={`${common_css} float-left`}>
                         Socials:
                     </h6>
