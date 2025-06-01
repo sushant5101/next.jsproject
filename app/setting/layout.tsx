@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function setting_layout({ children }: { children: React.ReactNode }) {
+export default function SettingLayout({ children }: { children: React.ReactNode }) {
     const setting_list_css = "hover:bg-gray-500 m-1 p-1 rounded-md block";
     const img_common_css = "inline overflow-hidden"
     const pathname = usePathname();
