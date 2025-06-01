@@ -1,3 +1,5 @@
+import Script from "next/script";
+
 export default function Home() {
   const common_input_css = "mr-1";
   const common_label_css = "hover:cursor-pointer";
@@ -12,9 +14,12 @@ export default function Home() {
       </ul><br />
 
       <form className="flex gap-2">
-        <label htmlFor="guessed_letter">Enter your Letter:</label> <input type="text" name="guess" id="guessed_letter" className="text-xl text-center border-1 border-white outline-none rounded-md pl-1 pr-1 min-w-[33px] w-[5%]" />
+        <label htmlFor="guessed_letter">Enter your Letter:</label> <input maxLength={1} type="text" name="guess" id="guessed_letter" className="text-xl text-center border-1 border-white outline-none rounded-md min-w-[33px] w-[5%]" />
         <input type="submit" value="Check" className="hover:bg-white hover:text-black transition-color duration-300 linear font-bold border-2 border-white pl-1 pr-1 rounded-md cursor-pointer" />
       </form>
+      <Script>
+        
+      </Script>
     </div>
   );
 }

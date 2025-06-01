@@ -14,7 +14,7 @@ export const Footer = () => {
     }
     return (
         <div className="text-gray-400  p-2 border-t-2 border-gray-400">
-            <h1 className="text-yellow-400">The page is still in development and not in its full form.</h1>
+            <h1 className="text-yellow-400 inline-block"><Image src="/important.svg" width={20} height={20} alt = "imp" className="float-left mr-1 ml-1 m-0.5" / > The page is still in development and not in its full form.</h1>
             <ul className=" flex justify-center p-2">
                 <li title="Under maintenances">
                     <h6 className={`${common_css} float-left`}>
