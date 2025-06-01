@@ -17,9 +17,6 @@ export default function Home() {
         <label htmlFor="guessed_letter">Enter your Letter:</label> <input maxLength={1} type="text" name="guess" id="guessed_letter" className="text-xl text-center border-1 border-white outline-none rounded-md min-w-[33px] w-[5%]" />
         <input type="submit" value="Check" className="hover:bg-white hover:text-black transition-color duration-300 linear font-bold border-2 border-white pl-1 pr-1 rounded-md cursor-pointer" />
       </form>
-      <Script>
-        
-      </Script>
     </div>
   );
 }
