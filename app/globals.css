@@ -24,3 +24,33 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes roller {
+
+  0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(-250px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+@keyframes design {
+  0%{
+    transform: rotateZ(0deg);
+  }
+  
+  50%{
+    transform: rotateZ(45deg);
+  }
+
+  100%{
+    transform: rotateZ(0deg);
+  }
+  
+}
