@@ -34,7 +34,7 @@ export default function Home() {
       console.log("data was fetched");
       setLength(data.length);
     }
-    catch (error: any) {
+    catch (error: unknown) {
       console.log(`Error : ${error}`)
     } finally {
       isFetching(false);
