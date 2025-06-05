@@ -140,10 +140,10 @@ export default function Home() {
     <div className="border-1 border-gray-500 p-2 rounded-md ml-auto mr-auto m-2 w-[60%]">
       <h1 className="text-center">Hello and welcome to the game of hangman</h1>
       <ul className="">
-        <p className={`${RadioDisabled ? 'hidden' : ''} `}>Choose a difficulty</p>
-        <li key={"easy"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-yellow-300'} `} htmlFor="easy"><input onChange={() => WordFetcher("easy")} disabled={RadioDisabled} type="radio" name="difficulty" id="easy" value="easy" className={`${common_input_css} `} />Easy</label></li>
-        <li key={"medium"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-orange-500'} `} htmlFor="medium"><input onChange={() => WordFetcher('medium')} disabled={RadioDisabled} type="radio" name="difficulty" id="medium" value="medium" className={`${common_input_css} `} />Medium</label></li>
-        <li key={"hard"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-red-600'} `} htmlFor="hard"><input onChange={() => WordFetcher('hard')} disabled={RadioDisabled} type="radio" name="difficulty" id="hard" value="hard" className={`${common_input_css} `} />Hard</label></li>
+        <p className={`${RadioDisabled ? 'hidden' : undefined} `}>Choose a difficulty</p>
+        <li key={"easy"} ><label className={`${common_label_css} ${RadioDisabled ? undefined : 'hover:text-yellow-300'} `} htmlFor="easy"><input onChange={() => WordFetcher("easy")} disabled={RadioDisabled} type="radio" name="difficulty" id="easy" value="easy" className={`${common_input_css} `} />Easy</label></li>
+        <li key={"medium"} ><label className={`${common_label_css} ${RadioDisabled ? undefined : 'hover:text-orange-500'} `} htmlFor="medium"><input onChange={() => WordFetcher('medium')} disabled={RadioDisabled} type="radio" name="difficulty" id="medium" value="medium" className={`${common_input_css} `} />Medium</label></li>
+        <li key={"hard"} ><label className={`${common_label_css} ${RadioDisabled ? undefined : 'hover:text-red-600'} `} htmlFor="hard"><input onChange={() => WordFetcher('hard')} disabled={RadioDisabled} type="radio" name="difficulty" id="hard" value="hard" className={`${common_input_css} `} />Hard</label></li>
       </ul><br />
 
       <p className={`${fetching ? 'visible' : 'hidden'} `}>Fetching a random word...</p>
@@ -154,7 +154,7 @@ export default function Home() {
 
       <form onSubmit={preventdefault} className={`mt-1 flex gap-2 ${afterRadio} `}>
         <label htmlFor="guessed_letter">Enter your Letter:</label> <input autoComplete="off" onChange={VerifyAlphabet} value={InputValue} disabled={!RadioDisabled} required maxLength={1} type="text" name="guess" id="guessed_letter" className="text-xl text-center border-1 border-white outline-none rounded-md min-w-[33px] w-[5%]" />
-        <input disabled={!Guessable} onClick={() => { InputValue ? Game_Manager() : '' }} type="submit" value="Check" className={`transition-color duration-300 linear font-bold border-2 border-white pl-1 pr-1 rounded-md '${Guessable ? ' cursor-pointer hover:bg-white hover:text-black' : 'Opacity-50 cursor-not-allowed text-gray-400'}`} />
+        <input disabled={!Guessable} onClick={() => { InputValue ? Game_Manager() : undefined }} type="submit" value="Check" className={`transition-color duration-300 linear font-bold border-2 border-white pl-1 pr-1 rounded-md '${Guessable ? ' cursor-pointer hover:bg-white hover:text-black' : 'Opacity-50 cursor-not-allowed text-gray-400'}`} />
       </form >
 
     </div >
