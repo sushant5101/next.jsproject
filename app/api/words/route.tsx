@@ -11,16 +11,20 @@ export async function GET(request: NextRequest) {
     const level = url.searchParams.get('level');
 
     let WordToChooseFrom: string[] = [];
+    let guess: number = 0;
 
     switch (level) {
         case 'easy':
             WordToChooseFrom = easy;
+            guess = 10;
             break;
         case 'medium':
             WordToChooseFrom = medium;
+            guess = 7;
             break;
         case 'hard':
             WordToChooseFrom = hard;
+            guess = 5;
             break;
         default:
             return new Response(JSON.stringify({ error: `${level} is not recognize as a internal parameter!` }),
@@ -37,6 +41,7 @@ export async function GET(request: NextRequest) {
         word: randomWord,
         length: randomWord.length,
         level: level,
+        guess: guess,
     }
 
     return new Response(JSON.stringify(response),
