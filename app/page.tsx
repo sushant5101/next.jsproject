@@ -8,7 +8,7 @@ export default function Home() {
   const [Guessable, isGuessable] = useState<boolean>(false);
   // const [isIncorrect, incorrect] = useState<boolean>(false);
   const [fetching, isFetching] = useState<boolean>(false);
-  // const [isCorrect, correct] = useState<boolean>(false);
+  const [isCorrect, correct] = useState<boolean>(false);
   const [InCorrect, SetInCorrect] = useState<number>(0);
   const [InputValue, setValue] = useState<string>('');
   const [Correct, SetCorrect] = useState<number>(0);
@@ -27,17 +27,15 @@ export default function Home() {
     Game_Manager();
   }
 
-  const GameInitializer = (guess: number) => {
+  const GameInitializer = (length: number) => {
     const temp: string[] = [''];
     for (let i = 0; i < length; i++) {
       temp[i] = "_";
     }
-    setRemainingGuess(guess);
     setDash(temp.join(" "));
   }
 
   const VerifyAlphabet = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Checking alphabets");
     const temp = /^[a-zA-Z]+$/.test(event.target.value);
     isGuessable(temp);
     if (!temp) {
@@ -47,34 +45,6 @@ export default function Home() {
       setValue(event.target.value);
     }
   };
-
-  const InputVerifier = () => {
-    console.log("Verifying user input.");
-    SetInCorrect(0);
-    const character = InputValue.toLowerCase();
-    console.log(character);
-    console.log(Word);
-    console.log(Correct);
-    console.log(InCorrect);
-
-    for (let i = 0; i < length; i++) {
-      if (character == Word[i] && !usedCharacter.includes(character)) {
-        SetCorrect(prevCount => {
-          const newCount = prevCount + 1;
-          console.log('Correct ', newCount);
-          return newCount;
-        });
-      } else if (character != Word[i] && !usedCharacter.includes(character)) {
-        SetInCorrect(prevCount => {
-          const newCount = prevCount + 1;
-          console.log('Incorrect ', newCount);
-          return newCount;
-        });
-      }
-    }
-    setValue('');
-    Used_Character_adder(character);
-  }
 
   async function WordFetcher(Level: string) {
     SetState(true);
@@ -95,7 +65,8 @@ export default function Home() {
       setLength(data.length);
       setLevel(data.level)
       SetWord(data.word);
-      GameInitializer(data.guess);
+      setRemainingGuess(data.guess);
+      GameInitializer(data.length);
     }
     catch (error: unknown) {
       console.log(`Error: ${error} `)
@@ -124,12 +95,57 @@ export default function Home() {
     SetUsedCharacter(tempArray);
   }
 
+  const character_DisPlayer = (index: number, character: string) => {
+
+    const TempArray = [...dash.split(' ')];
+
+    for (let i = 0; i < length; i++) {
+      if (i === index) {
+        TempArray[i] = character;
+      }
+    }
+    setDash(TempArray.join(" "));
+    console.log(isCorrect);
+    console.log(InCorrect);
+  };
+
+  const State_Checker = () => {
+
+  }
+
   const Game_Manager = () => {
-    console.log("Main game logic function");
 
     isGuessable(false);
-    InputVerifier();
+    correct(false);
 
+    SetInCorrect(0);
+    const character = InputValue.toLowerCase();
+
+    for (let i = 0; i < length; i++) {
+      if (character == Word[i] && !usedCharacter.includes(character)) {
+        SetCorrect(Correct + 1);
+        character_DisPlayer(i, character);
+      } else if (character != Word[i] && !usedCharacter.includes(character)) {
+        SetInCorrect(prevCount => {
+          const newCount = prevCount + 1;
+          console.log('Incorrect ', newCount);
+          return newCount;
+        });
+      }
+    }
+    // if (InCorrect > 0) {
+    //   incorrect(true);
+    // }
+    setValue('');
+    Used_Character_adder(character);
+
+    // // checking for win 
+
+    // if (Correct == length) {
+    //   console.log("You found all the letter");
+    // } else if (InCorrect > 0) {
+    //   console.log("guess: ", RemainingGuess - 1);
+    // }
   }
 
   const common_input_css = "mr-1";
@@ -144,7 +160,7 @@ export default function Home() {
         <li key={"easy"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-yellow-300'} `} htmlFor="easy"><input onChange={() => WordFetcher("easy")} disabled={RadioDisabled} type="radio" name="difficulty" id="easy" value="easy" className={`${common_input_css} `} />Easy</label></li>
         <li key={"medium"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-orange-500'} `} htmlFor="medium"><input onChange={() => WordFetcher('medium')} disabled={RadioDisabled} type="radio" name="difficulty" id="medium" value="medium" className={`${common_input_css} `} />Medium</label></li>
         <li key={"hard"} ><label className={`${common_label_css} ${RadioDisabled ? '' : 'hover:text-red-600'} `} htmlFor="hard"><input onChange={() => WordFetcher('hard')} disabled={RadioDisabled} type="radio" name="difficulty" id="hard" value="hard" className={`${common_input_css} `} />Hard</label></li>
-      </ul><br />
+      </ul>
 
       <p className={`${fetching ? 'visible' : 'hidden'} `}>Fetching a random word...</p>
 

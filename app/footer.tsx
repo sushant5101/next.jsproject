@@ -14,7 +14,7 @@ export const Footer = () => {
     }
     return (
         <div className="text-gray-400  p-2 border-t-2 border-gray-400">
-            <h1 className="text-yellow-400 inline-block"><Image src="/important.svg" width={20} height={20} alt = "imp" className="float-left mr-1 ml-1 m-0.5" / > The page is still in development and not in its full form.</h1>
+            <h1 className="text-yellow-400 inline-block"><Image src="/important.svg" width={20} height={20} alt="imp" className="float-left mr-1 ml-1 m-0.5" /> The page is still in development and not in its full form.</h1>
             <ul className=" flex justify-center p-2">
                 <li title="Under maintenances">
                     <h6 className={`${common_css} float-left`}>
@@ -36,6 +36,7 @@ export const Footer = () => {
                     </div>
                 </li>
             </ul>
+            <h2>Code available in github <a target="blank" href="https://github.com/sushant5101/next.jsproject"><b className={`${common_links_css}`}>Github</b></a> </h2>
             <h6>&#169; 2025 Next.js Practice Project. All Rights Reserved.</h6>
             <h6 title="Not available right now">|<Link href={`${common_links}`} className={`${common_links_css}`}> Privacy Policy </Link>|<Link href={`${common_links}`} className={`${common_links_css}`}> Terms of Service </Link>|</h6>
         </div >
