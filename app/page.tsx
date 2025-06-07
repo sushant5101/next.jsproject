@@ -109,9 +109,9 @@ export default function Home() {
     console.log(InCorrect);
   };
 
-  const State_Checker = () => {
+  // const State_Checker = () => {
 
-  }
+  // }
 
   const Game_Manager = () => {
 
